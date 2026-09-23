@@ -116,10 +116,7 @@ def capture_message_content_instrument(monkeypatch, clear_exporter):
 def otel_sdk_disabled_instrument(monkeypatch, clear_exporter):
     monkeypatch.setenv("OTEL_SDK_DISABLED", "true")
     instrumentor = OpenAIInstrumentor()
-    instrumentor.instrument(
-        tracer_provider=trace.NoOpTracerProvider(),
-        meter_provider=metrics.NoOpMeterProvider(),
-    )
+    instrumentor.instrument()
 
     yield instrumentor
 
